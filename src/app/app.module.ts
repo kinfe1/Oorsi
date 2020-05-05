@@ -49,6 +49,9 @@ import { ShopHomeComponent } from "./component/shop/shop-home/shop-home.componen
 import { UserDetailComponent } from "./user-detail/user-detail.component";
 import { AddAmazonProductToWishlistComponent } from './component/add-amazon-product-to-wishlist/add-amazon-product-to-wishlist.component';
 import { SignupComponent } from './component/wizard/signup/signup.component';
+import { RegisterWrapperComponent } from './component/user/register-wrapper/register-wrapper.component';
+import { AddBirthdayComponent } from './component/add-birthday/add-birthday.component';
+import { AddBirthdateWizardComponent } from './add-birthdate-wizard/add-birthdate-wizard.component';
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/shop", pathMatch: "full" },
@@ -86,7 +89,7 @@ const appRoutes: Routes = [
   { path: "logout", component: LogoutComponent },
   {
     path: "register",
-    component: RegisterComponent,
+    component: RegisterWrapperComponent,
     canActivate: [AnonymousService]
   },
   {
@@ -139,8 +142,9 @@ const appRoutes: Routes = [
     ShopHomeComponent,
     UserDetailComponent,
     AddAmazonProductToWishlistComponent,
-    SignupComponent
-  ],
+    SignupComponent,
+    RegisterWrapperComponent,
+    AddBirthdayComponent],
   imports: [
     BrowserModule,
     FormsModule,

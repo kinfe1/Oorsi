@@ -6,9 +6,9 @@ import { WizardComponent } from './wizard.component';
 import { SignupComponent } from './signup/signup.component';
 import { RegisterComponent } from '../user/register/register.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { AddBirthdayComponent } from './add-birthday/add-birthday.component';
 import { AddAmazonProductComponent } from './add-amazon-product/add-amazon-product.component';
 import { SearchProductComponent } from './search-product/search-product.component';
+import { AddBirthdateWizardComponent } from './add-birthdate-wizard/add-birthdate-wizard.component';
 
 const wizardRoutes: Routes = [
     {
@@ -16,19 +16,18 @@ const wizardRoutes: Routes = [
         component: WizardComponent,
         children: [
             {
-                path: 'signup',
-                component: RegisterComponent,
-            }
-            , {
-                path: 'welcome',
+                path: '',
                 component: WelcomeComponent,
+            },
+            {
+                path: 'signup',
+                component: SignupComponent,
             }
-            // , 
-            // {
-            //   path: 'loader',
-            //   component: LoaderDialogComponent,
-            //   data: { title: 'Loader', breadcrumb: 'LOADER' },
-            // }
+            ,
+            {
+                path: 'addBirthdate',
+                component: AddBirthdateWizardComponent,
+            }
         ]
     }
 ];
@@ -39,7 +38,7 @@ const wizardRoutes: Routes = [
         FormsModule,
         RouterModule.forChild(wizardRoutes), ReactiveFormsModule, ReactiveFormsModule
     ],
-    declarations: [WizardComponent, WelcomeComponent, AddBirthdayComponent, AddAmazonProductComponent, SearchProductComponent],
+    declarations: [WizardComponent, WelcomeComponent, AddAmazonProductComponent, SearchProductComponent, AddBirthdateWizardComponent],
     providers: []
 })
 export class WizardModule { }

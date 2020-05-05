@@ -1,7 +1,7 @@
 import { User } from './../../../model/user';
 import { Subscription } from 'rxjs/Rx';
 import { AuthService } from './../../../service/auth/auth.service';
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Error } from '../../../model/error';
@@ -25,7 +25,11 @@ export class RegisterComponent implements OnInit {
 
   private subscription: Subscription;
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) { }
+  @Output("userRegistered") public userRegistered: EventEmitter<void>;
+
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) {
+    this.userRegistered = new EventEmitter();
+  }
 
   ngOnInit() {
 
@@ -73,7 +77,7 @@ export class RegisterComponent implements OnInit {
     this.submitAttempt = true;
     if (this.myForm.valid) {
       this.authService.register(this.myForm.value).then(
-        result => { this.router.navigate(['/news']) },
+        result => { this.userRegistered.emit() },
         err => {
           let errors: Error[] = err;
           for (let error of errors) {
