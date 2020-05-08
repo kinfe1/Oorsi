@@ -1,1 +1,35 @@
-<p>add-birthday works!</p>
+<div class="col-md-6 col-md-offset-3">
+    <h3>Add Birthday</h3>
+    <div class="inner">
+        <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="col-sm-12 row">
+                <!-- <p class="fieldError" *ngIf="form.controls.firstName.errors?.required  && submitAttempt">First Name
+                    required</p> -->
+                <div class="col-sm-4"><select class="form-control col-sm-4" requred formControlName="month"
+                        [class.invalid]="!form.controls.month.valid  && submitAttempt">
+                        <option value="">Month</option>
+                        <option *ngFor="let m of months" value="{{m.value}}">{{m.label}}</option>
+                    </select></div>
+                <div class="col-sm-4"><input type="number" class="form-control col-sm-4" placeholder="Day" required
+                        formControlName="day" [class.invalid]="!form.controls.day.valid  && submitAttempt">
+                </div>
+                <div class="col-sm-4"> <input type="number" class="form-control col-sm-4" placeholder="Year" required
+                        formControlName="year" [class.invalid]="!form.controls.year.valid  && submitAttempt">
+                </div>
+
+
+
+            </div>
+            <div class="form-footer col-sm-12">
+                <div class="form-submit">
+                    <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">
+                        Save
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>

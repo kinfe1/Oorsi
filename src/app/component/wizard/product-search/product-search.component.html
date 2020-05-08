@@ -1,0 +1,7 @@
+<!-- Display grid of products -->
+<div class="col-sm-12">
+    <div class="row">
+        <oorsi-web-product-item *ngFor="let product of products; let i = index" [product]="product" [index]="i">
+        </oorsi-web-product-item>
+    </div>
+</div>

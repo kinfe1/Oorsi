@@ -10,6 +10,9 @@ import { AddAmazonProductComponent } from "./add-amazon-product/add-amazon-produ
 import { SearchProductComponent } from "./search-product/search-product.component";
 import { AddPhonenumberComponent } from "./add-phonenumber/add-phonenumber.component";
 import { IformsModule } from "src/app/l-components/forms/iforms.module";
+import { LoggedInUserService } from 'src/app/service/logged-in-user.service';
+import { ProductSearchTypeComponent } from './product-search-type/product-search-type.component';
+import { ProductSearchComponent } from './product-search/product-search.component';
 
 const wizardRoutes: Routes = [
   {
@@ -17,18 +20,40 @@ const wizardRoutes: Routes = [
     component: WizardComponent,
     children: [
       {
-        path: "signup",
-        component: SignupComponent,
-      },
-      {
-        path: "add-phone",
-        component: AddPhonenumberComponent,
-      },
-      {
         path: "",
         pathMatch: "full",
         component: WelcomeComponent,
       },
+      {
+        path: "signup",
+        component: SignupComponent,
+      },
+      {
+        path: "addBirthday",
+        component: AddBirthdayComponent,
+        canActivate: [LoggedInUserService]
+      },
+      {
+        path: "addPhone",
+        component: AddPhonenumberComponent,
+        canActivate: [LoggedInUserService]
+      },
+      {
+        path: "productSearchType",
+        component: ProductSearchTypeComponent,
+        canActivate: [LoggedInUserService]
+      },
+      {
+        path: "addAmazonProduct",
+        component: AddAmazonProductComponent,
+        canActivate: [LoggedInUserService]
+      },
+      {
+        path: "searchProduct",
+        component: ProductSearchComponent,
+        canActivate: [LoggedInUserService]
+      }
+
       // ,
       // {
       //   path: 'loader',
@@ -45,7 +70,7 @@ const wizardRoutes: Routes = [
     FormsModule,
     RouterModule.forChild(wizardRoutes),
     ReactiveFormsModule,
-    IformsModule,
+    IformsModule
   ],
   declarations: [
     WizardComponent,
@@ -55,7 +80,9 @@ const wizardRoutes: Routes = [
     AddBirthdayComponent,
     AddAmazonProductComponent,
     SearchProductComponent,
+    ProductSearchTypeComponent,
+    ProductSearchComponent
   ],
   providers: [],
 })
-export class WizardModule {}
+export class WizardModule { }
