@@ -7,7 +7,6 @@ import { SignupComponent } from "./signup/signup.component";
 import { WelcomeComponent } from "./welcome/welcome.component";
 import { AddBirthdayComponent } from "./add-birthday/add-birthday.component";
 import { AddAmazonProductComponent } from "./add-amazon-product/add-amazon-product.component";
-import { SearchProductComponent } from "./search-product/search-product.component";
 import { AddPhonenumberComponent } from "./add-phonenumber/add-phonenumber.component";
 import { IformsModule } from "src/app/l-components/forms/iforms.module";
 import { LoggedInUserService } from 'src/app/service/logged-in-user.service';
@@ -79,7 +78,6 @@ const wizardRoutes: Routes = [
     WelcomeComponent,
     AddBirthdayComponent,
     AddAmazonProductComponent,
-    SearchProductComponent,
     ProductSearchTypeComponent,
     ProductSearchComponent
   ],
