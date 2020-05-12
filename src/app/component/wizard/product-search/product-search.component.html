@@ -1,7 +1,48 @@
-<!-- Display grid of products -->
-<div class="col-sm-12">
-    <div class="row">
-        <oorsi-web-product-item *ngFor="let product of products; let i = index" [product]="product" [index]="i">
-        </oorsi-web-product-item>
-    </div>
+<div class="oorsi-search-container">
+    <form class="search-box" (ngSubmit)="onSearch()">
+        <input type="text" class="form-control" placeholder="Search OOrsi shop" [(ngModel)]="searchString" name="s">
+        <button type="submit">
+            <i class="material-icons search"></i>
+        </button>
+    </form>
 </div>
+
+
+<carousel [itemsPerSlide]="4" [singleSlideOffset]="false" [interval]="false" [indicatorsByChunk]="true"
+    *ngIf="products">
+    <slide *ngFor="let product of products">
+        <!-- <div class="col-lg-3 col-md-4 col-sm-6"> -->
+        <div class="shop-item">
+            <div class="shop-thumbnail">
+                <!-- <a routerLink="/shop/r/{{product.retailerId}}/sku/{{product.sku}}" class="item-link"></a> -->
+                <div class="square">
+                    <img src="{{product.image}}" class="product-image img img-responsive" alt="Shop item">
+                </div>
+            </div>
+            <div class="shop-item-details">
+                <span class="shop-item-title"><a
+                        routerLink="/shop/r/{{product.retailerId}}/sku/{{product.sku}}">{{product.name}}</a></span>
+                <span class="shop-item-price">
+                    <span class="old-price" *ngIf="product.regularPrice!=product.salePrice">
+                        {{product.regularPrice | currency:'USD'}}
+                    </span>
+                    <span>
+                        {{product.salePrice | currency:'USD'}}
+                    </span>
+                </span>
+            </div>
+            <div>
+                <a (click)="addToWishlist()" class="add-to-whishlist" data-toggle="tooltip" data-placement="top"
+                    title="Wishlist">
+                    <i class="material-icons favorite_border"></i>
+                    <em>Add to Wishlist</em>
+                </a>
+            </div>
+        </div>
+        <!-- .shop-item -->
+        <!-- </div> -->
+    </slide>
+</carousel>
+
+<div class="row"><button class="btn btn-secondary" routerLink="/welcome/productSearchType">Back</button><button
+        class="btn btn-primary" routerLink="/welcome/addAmazonProduct">Add Amazon Product</button></div>

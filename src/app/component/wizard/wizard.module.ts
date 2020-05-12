@@ -13,6 +13,9 @@ import { LoggedInUserService } from 'src/app/service/logged-in-user.service';
 import { ProductSearchTypeComponent } from './product-search-type/product-search-type.component';
 import { ProductSearchComponent } from './product-search/product-search.component';
 
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { AddAmazonProductToWishlistModule } from '../add-amazon-product-to-wishlist/add-amazon-product-to-wishlist.module';
+
 const wizardRoutes: Routes = [
   {
     path: "",
@@ -69,7 +72,9 @@ const wizardRoutes: Routes = [
     FormsModule,
     RouterModule.forChild(wizardRoutes),
     ReactiveFormsModule,
-    IformsModule
+    IformsModule,
+    CarouselModule.forRoot(),
+    // AddAmazonProductToWishlistModule
   ],
   declarations: [
     WizardComponent,
@@ -79,8 +84,7 @@ const wizardRoutes: Routes = [
     AddBirthdayComponent,
     AddAmazonProductComponent,
     ProductSearchTypeComponent,
-    ProductSearchComponent
-  ],
+    ProductSearchComponent],
   providers: [],
 })
 export class WizardModule { }

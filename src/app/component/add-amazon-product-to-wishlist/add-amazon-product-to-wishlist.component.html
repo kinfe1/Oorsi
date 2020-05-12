@@ -13,9 +13,10 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <div class="pull-right">
-                        <button type="button" class="btn btn-default" id="cancelButton"
-                            (click)="onCancel()">Cancel</button>
-                        <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Add to Wishlist</button>
+                        <button type="button" class="btn btn-default" id="cancelButton" (click)="onCancel()"
+                            *ngIf="showCancelButton">Cancel</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Add to
+                            Wishlist</button>
                     </div>
                 </div>
             </div>
