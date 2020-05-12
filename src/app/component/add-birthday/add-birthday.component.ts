@@ -29,7 +29,7 @@ export class AddBirthdayComponent implements OnInit {
 
   save() {
     this.loading = true;
-    this.birthdayService.save(this.myForm.value).subscribe(data => {
+    this.birthdayService.addBirthday(this.myForm.value).subscribe(data => {
       this.loading = false;
       this.saveEmmiter.emit();
     }, error => {
