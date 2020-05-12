@@ -51,6 +51,9 @@ import { AddAmazonProductToWishlistModule } from "./component/add-amazon-product
 import { IformsModule } from "./l-components/forms/iforms.module";
 import { MyProfileComponent } from "./component/my-profile/my-profile.component";
 import { AddAmazonProductToWishlistComponent } from './component/add-amazon-product-to-wishlist/add-amazon-product-to-wishlist.component';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { PasswordResetCodeConfirmComponent } from './component/password-reset-code-confirm/password-reset-code-confirm.component';
+import { PasswordResetComponent } from './component/password-reset/password-reset.component';
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/shop", pathMatch: "full" },
@@ -112,6 +115,8 @@ const appRoutes: Routes = [
     // data: { title: 'Catalog', breadcrumb: 'Catalog' },
     // canActivate: [AuthService]
   },
+  { path: "forgotPassword", component: ForgotPasswordComponent },
+  { path: "confirmPasswordResetCode", component: PasswordResetCodeConfirmComponent },
 ];
 
 @NgModule({
@@ -144,7 +149,10 @@ const appRoutes: Routes = [
     ShopHomeComponent,
     UserDetailComponent,
     MyProfileComponent,
-    AddAmazonProductToWishlistComponent
+    AddAmazonProductToWishlistComponent,
+    ForgotPasswordComponent,
+    PasswordResetCodeConfirmComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,
