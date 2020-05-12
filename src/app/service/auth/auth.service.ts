@@ -38,7 +38,7 @@ export class AuthService {
     }
 
     checkError(err) {
-        if (err && err != null && (err.status == 403|| err.status == 401)) {
+        if (err && err != null && (err.status == 403 || err.status == 401)) {
             this.logout();
             this.router.navigate(['login']);
             return true;
@@ -67,8 +67,8 @@ export class AuthService {
                         resolve(false);
                     }
                 }, (err) => {
-                  console.log('login failed from auth servie', err);
-                  reject(err.error);
+                    console.log('login failed from auth servie', err);
+                    reject(err.error);
                 });
         })
     }
@@ -95,7 +95,7 @@ export class AuthService {
                         resolve(false);
                     }
                 }, err => {
-                  reject(err.error)
+                    reject(err.error)
                 });
         });
 
@@ -139,7 +139,27 @@ export class AuthService {
         this.isLoggedInEmitter.emit(this.isLoggedIn());
     }
 
+    requestCode(resetPasswordRequest): Observable<any> {
+        return this.http.post(OORSI_API_ENDPOINT + 'password/reset/token', resetPasswordRequest);
+    }
 
+    resetPassword(resetPasswordRequest): Promise<boolean> {
+        return new Promise((resolve, reject) => {
+            this.http.post<Token>(OORSI_API_ENDPOINT + 'password/reset', resetPasswordRequest)
+                .subscribe(response => { // login successful if there's a jwt token in the response
+                    let token = response && response.token;
+                    if (token) {
+                        // store username and jwt token in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('currentUser', token);
+
+                        this.isLoggedInEmitter.emit(this.isLoggedIn());
+
+                        // return true to indicate successful login
+                        resolve(true);
+                    }
+                }), err => reject(err);
+        })
+    }
 
 
 

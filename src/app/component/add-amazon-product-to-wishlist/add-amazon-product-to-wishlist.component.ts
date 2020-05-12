@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Product } from 'src/app/model/product';
 import { AuthService } from 'src/app/service/auth/auth.service';
@@ -11,6 +11,8 @@ import { WishListProduct } from 'src/app/model/wishlistproduct';
   styleUrls: ['./add-amazon-product-to-wishlist.component.css']
 })
 export class AddAmazonProductToWishlistComponent implements OnInit {
+
+  @Input() showCancelButton: boolean = true;
 
   complexForm: FormGroup;
   error: boolean;

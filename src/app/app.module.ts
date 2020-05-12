@@ -47,9 +47,13 @@ import { AuthInterceptor } from "./service/auth/auth-interceptor";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ShopHomeComponent } from "./component/shop/shop-home/shop-home.component";
 import { UserDetailComponent } from "./user-detail/user-detail.component";
-import { AddAmazonProductToWishlistComponent } from "./component/add-amazon-product-to-wishlist/add-amazon-product-to-wishlist.component";
+import { AddAmazonProductToWishlistModule } from "./component/add-amazon-product-to-wishlist/add-amazon-product-to-wishlist.module";
 import { IformsModule } from "./l-components/forms/iforms.module";
 import { MyProfileComponent } from "./component/my-profile/my-profile.component";
+import { AddAmazonProductToWishlistComponent } from './component/add-amazon-product-to-wishlist/add-amazon-product-to-wishlist.component';
+import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { PasswordResetCodeConfirmComponent } from './component/password-reset-code-confirm/password-reset-code-confirm.component';
+import { PasswordResetComponent } from './component/password-reset/password-reset.component';
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "/shop", pathMatch: "full" },
@@ -111,6 +115,8 @@ const appRoutes: Routes = [
     // data: { title: 'Catalog', breadcrumb: 'Catalog' },
     // canActivate: [AuthService]
   },
+  { path: "forgotPassword", component: ForgotPasswordComponent },
+  { path: "confirmPasswordResetCode", component: PasswordResetCodeConfirmComponent },
 ];
 
 @NgModule({
@@ -142,8 +148,11 @@ const appRoutes: Routes = [
     ImageURLPipe,
     ShopHomeComponent,
     UserDetailComponent,
-    AddAmazonProductToWishlistComponent,
     MyProfileComponent,
+    AddAmazonProductToWishlistComponent,
+    ForgotPasswordComponent,
+    PasswordResetCodeConfirmComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,
@@ -153,6 +162,7 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     ReactiveFormsModule,
     IformsModule,
+    // AddAmazonProductToWishlistModule
   ],
   providers: [
     ProductService,
@@ -178,4 +188,4 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

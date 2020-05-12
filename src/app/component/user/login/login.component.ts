@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   errors: Error[] = [];
   loading: boolean;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     FB.init({
@@ -70,5 +70,12 @@ export class LoginComponent implements OnInit {
       },
       { scope: "email,public_profile,user_friends" }
     );
+  }
+
+  forgotPassword() {
+    if (this.loading) {
+      return;
+    }
+    this.router.navigate(["/forgotPassword"]);
   }
 }

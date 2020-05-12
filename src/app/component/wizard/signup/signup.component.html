@@ -1,7 +1,7 @@
 <div class="col-md-6 col-md-offset-3">
   <h3>Register</h3>
   <div class="inner">
-    <form class="login-form row" [formGroup]="signupFormGroup" (ngSubmit)="onSubmit()">
+    <form class="login-form row" [formGroup]="signupFormGroup" (ngSubmit)="register()">
 
       <oorsi-form-elem class="col-sm-6">
         <input type="text" class="form-control" oorsiFormElem placeholder="First Name" formControlName="firstName">

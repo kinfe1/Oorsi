@@ -13,7 +13,6 @@ export class ProductService {
     constructor(private http: HttpClient) { }
 
     public search(s: string): Observable<any> {
-
         return this.http.get(OORSI_API_ENDPOINT + 'product/search?s=' + s + '&page=1');
     }
 

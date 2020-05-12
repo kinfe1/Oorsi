@@ -7,7 +7,7 @@ import { User } from "../../model/user";
 @Component({
   selector: "oorsi-web-cart",
   templateUrl: "./cart.component.html",
-  styleUrls: ["./cart.component.css"]
+  styleUrls: ["./cart.component.css"],
 })
 export class CartComponent implements OnInit {
   users: User[] = [];
@@ -15,11 +15,11 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.cartService.getCart().subscribe(
-      data => {
+      (data) => {
         let cartProducts: CartProduct[] = data;
         for (let cartProduct of cartProducts) {
           let added: boolean = false;
@@ -40,31 +40,33 @@ export class CartComponent implements OnInit {
           }
         }
       },
-      err => this.authService.checkError(err)
+      (err) => this.authService.checkError(err)
     );
   }
 
   onDeleteCartProduct(cartProduct: CartProduct) {
     this.cartService.deleteCartProduct(cartProduct).then(
-      data => {
+      (data) => {
         cartProduct.forUser.cartProducts.splice(
           cartProduct.forUser.cartProducts.indexOf(cartProduct),
           1
         );
       },
-      err => this.authService.checkError(err)
+      (err) => this.authService.checkError(err)
     );
   }
 
   decrease(cartProduct: CartProduct) {
     // prefent negative quantity check
-    if(cartProduct.quantity == 0) {
+    if (cartProduct.quantity == 1) {
       return;
     }
     cartProduct.quantity--;
+    this.cartService.updateCartProduct(cartProduct);
   }
+
   increase(cartProduct: CartProduct) {
     cartProduct.quantity++;
-
+    this.cartService.updateCartProduct(cartProduct);
   }
 }
