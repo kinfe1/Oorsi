@@ -1,0 +1,19 @@
+<div class="form-container">
+
+  <p class="fieldError" *ngIf="errors?.required && control?.touched">
+    {{formElem?.label}} is required.
+  </p>
+
+  <p class="fieldError" *ngIf="errors?.email && control?.touched">
+    {{formElem?.label}} must be a valid email.
+  </p>
+
+
+  <p class="fieldError" *ngIf="errors?.minLength && control?.touched">
+    {{formElem?.label}} must be more than {{errors?.minLength |json}} characters long.
+  </p>
+
+
+
+  <ng-content></ng-content>
+</div>
