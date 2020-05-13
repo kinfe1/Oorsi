@@ -14,8 +14,8 @@ import { ProductSearchTypeComponent } from './product-search-type/product-search
 import { ProductSearchComponent } from './product-search/product-search.component';
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { AddAmazonProductToWishlistModule } from '../add-amazon-product-to-wishlist/add-amazon-product-to-wishlist.module';
-import { AddBirthdayComponent } from '../add-birthday/add-birthday.component';
+import { AddBirthdayComponent } from './add-birthday/add-birthday.component';
+// import { AddAmazonProductToWishlistModule } from '../add-amazon-product-to-wishlist/add-amazon-product-to-wishlist.module';
 
 const wizardRoutes: Routes = [
   {
